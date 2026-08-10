@@ -1,0 +1,187 @@
+ insert into stud values(1,'bhautik',9198313261,3,'B',90);
+
+ insert into stud values(2,'parth',9198313261,3,'A',98);
+
+ insert into stud values(3,'vishal',9198313261,3,'B',90);
+
+ insert into stud values(4,'hiren',9198313261,3,'A',97);
+
+
+
+
+insert into stud (rollno,name,mob,sem,div,pr_rank)values(5,'karan',2913316111,3,'c',93
+
+Emp_id	 Emp_name	 Post 	 Mgr_id 	Hire_date 		Salary 	Commission	 Dept_id
+12345 	 BansiPadia 	 Clerk 		18-11-1990 	15000 			 10
+13254 	 Radha Sharma 	 Salesman  12345	25-11-1990 	12000 	4000 		 20
+12675 	 TanmayDomadiya 	 President 	05-07-1985 	124000 			 10
+13457 	 Suraj Prakash 	 Salesman  12345 	12-08-1992 	14650 	1700 		 30
+14567 	 Seema Lava 	 ProgramR  13654 	17-07-1994 	35000 			 10
+
+(Emp_id	 number(5) , Emp_name varchar2(15), Post  varchar2(10) ,
+Mgr_id  number(5),  Hire_date date , Salary number(5) , 
+Commission number(4), Dept_id number(2));
+
+
+
+
+INSERT INTO stud (emp_no, emp_name, post, mgr_id, hiredate, salary, Dept_id)
+VALUES (1, 'BansiPadia', 'Clerk', 0,
+        TO_DATE('18-11-1990', 'DD-MM-YYYY'),
+        15000, 10);
+
+
+
+
+CREATE TABLE company (
+    job VARCHAR2(20),
+    FOREIGN KEY (job) REFERENCES emp1(job)
+);
+
+
+CREATE TABLE company 
+(
+    emp_id number(10)
+     REFERENCES employee(emp_id)
+);
+
+CREATE TABLE com (
+    job VARCHAR2(20),
+    FOREIGN KEY (job) REFERENCES emp(job)
+);
+
+
+CREATE TABLE comp
+(
+    emp_id number(10)
+     check employee(emp_id)
+);
+
+CREATE TABLE comp
+(
+    emp_id NUMBER(10)
+    CHECK employee(emp_id)
+);
+
+ select * from 
+e.emp_name,d.dept_no,d.depart_name from emp1 e left outer join department d on e.dept =d.dept_no;
+
+
+SELECT e.emp_name,
+       d.dept_no,
+       d.depart_name
+FROM emp1 e
+LEFT OUTER JOIN department d
+ON e.dept_id = d.dept_no;
+
+
+SELECT * from emp e.empno,
+       e.ename,
+       e.job,
+       e.deptno,
+       d.deptno,
+       d.depart_name
+FROM emp1 e
+LEFT OUTER JOIN department d
+ON e.deptno = d.deptno;
+
+12345 BansiPadia Clerk 18-11-1990 15000 10
+
+INSERT INTO emp2
+VALUES (1, 'bhautik', 'CLERK', NULL, '11-18-1990', 15000, NULL, 10);
+
+
+ INSERT INTO emp2
+   VALUES (
+       18654,
+        'Ramesh Vasoya',
+        'Analyst',
+         12675,
+       TO_DATE(' 05-05-1993 ', 'MM-DD-YYYY'),
+      85000  ,
+      6500,
+      10);
+des
+
+select e.empno,e.ename,d.dname,d.loc
+
+Department
+create table dept (Dept_no number(5) ,Depart_Name varchar2(15),  Location varchar2(10));
+10 IT Anand
+20 Sales Bombay
+30 Purchase Surat
+40 Finance Anand
+50 Marketing Surat
+
+
+(2) Create a following table report should have title, related column formatting and display sum
+of item price for all the orders.
+Table: Order_detail - Order_no, Order_date, Item, Item_price, Discount
+
+
+--->create table  Order_detail  (Order_no number(2),	Order_date date,Item varchar2(10) , Item_price number(5),  Discount number(2));
+
+---> insert into order_detail values(15,  DATE '2026-09-07' , 'printer',10500,10);
+
+ALTER TABLE order_detail
+ADD CONSTRAINT pk_order_detail
+PRIMARY KEY (ORDER_NO);
+
+
+
+(3) Create a following table and solve the given query.
+Table: Emp - Emp_no, Emp_name, company, salary, city
+I. Find the name of al employee who work for an InfoSystem Ltd.
+II. Find all the employee details who don’t work for a InfoSystem Ltd. (Using Subquery)
+III. Find all the employee who works in city “Mumbai”.
+
+---> create table emp3 (emp_no number(2) ,Emp_name varchar2(10),company varchar2(10),salary number(5), city varchar2(6));
+
+---> insert into 
+
+
+
+
+
+
+
+
+	 		 				  						 					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+github===kalpeshcode001
+
+K@cha001
+
+
+
+
+
+
+
+
+
+16754 Krupa Vala Programmer 13654 13-08-1992 30000 10
+14562 Kalpana Joshi Clerk 17-09-1990 17000 40
+12435 KevalRaval Salesman 12345 20-10-1990 18000 6500 20
+13654 ParthVasoya Analyst 12675 27-12-1995 90000 10
+18654 Ramesh Vasoya Analyst 12675 15-05-1993 85000 10
