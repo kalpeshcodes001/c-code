@@ -1,0 +1,22 @@
+select emp_name ,salary,dept_id from employee2 where salary>=25000 and dept
+  2  _id='10';
+_id='10'
+*
+ERROR at line 2:
+ORA-00911: invalid character 
+
+
+SQL> select emp_name,salary,dept_id from employee2 where salary>25000 and dept_id='10';
+
+EMP_NAME                 SALARY    DEPT_ID                                      
+-------------------- ---------- ----------                                      
+parth vasoya              90000         10                                      
+ramesh vasoya             85000         10                                      
+tanmaydomadiya           124000         10                                      
+seema lava                35000         10                                      
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 

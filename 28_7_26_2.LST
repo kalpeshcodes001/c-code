@@ -1,0 +1,182 @@
+create table order_detail (order_no number(10),order_date varchar2(20),item varchar2(20),item_price number(10),discount number(10));
+
+Table created.
+
+SQL> disc order_detail;
+Disconnected from Oracle Database 10g Enterprise Edition Release 10.2.0.3.0 - Production
+With the Partitioning, OLAP and Data Mining options
+SQL> desc order_detail;
+SP2-0640: Not connected
+SP2-0641: "DESCRIBE" requires connection to server
+SQL> describe order_detail;
+SP2-0640: Not connected
+SP2-0641: "DESCRIBE" requires connection to server
+SQL> select *from order_detail;
+SP2-0640: Not connected
+SQL> select *from tab;
+SP2-0640: Not connected
+SQL> select *from employee2;
+SP2-0640: Not connected
+SQL> select *from tab;
+SP2-0640: Not connected
+SQL> connect
+Enter user-name: scott
+Connected.
+SQL> 
+SQL> select *from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+ORDER_DETAIL                   TABLE                                            
+DEPARTMENT                     TABLE                                            
+EMPLOYEE2                      TABLE                                            
+EMPLOYEEDETAILSS               TABLE                                            
+BIN$bwL+4Q5/RjCyDt/CUh/fdw==$0 TABLE                                            
+BIN$qcj7UgtAREqnoarpX5gERQ==$0 TABLE                                            
+EMPLOYEE                       TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+STUDENTS                       TABLE                                            
+EMP21                          TABLE                                            
+STUDENT                        TABLE                                            
+DEPARTMENT2                    TABLE                                            
+
+15 rows selected.
+
+SQL> desc order_detail;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ORDER_NO                                           NUMBER(10)
+ ORDER_DATE                                         VARCHAR2(20)
+ ITEM                                               VARCHAR2(20)
+ ITEM_PRICE                                         NUMBER(10)
+ DISCOUNT                                           NUMBER(10)
+
+SQL> insert into order_detail values('1','28-07-2026','pizza','99','10%');
+insert into order_detail values('1','28-07-2026','pizza','99','10%')
+                                                              *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> insert into order_detail values ('1',29-07-26','pizza','99','10');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> insert into order_detail values('1','28-07-26','pizza','99','10');
+
+1 row created.
+
+SQL> desc employee2;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER(10)
+ EMP_NAME                                           VARCHAR2(20)
+ POST                                               VARCHAR2(30)
+ MGR_ID                                             NUMBER(10)
+ HIRE_DATE                                          VARCHAR2(20)
+ SALARY                                             NUMBER(10)
+ OMMISSION                                          NUMBER(10)
+ DEPT_ID                                            NUMBER(10)
+
+SQL> desc order_detail;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ORDER_NO                                           NUMBER(10)
+ ORDER_DATE                                         VARCHAR2(20)
+ ITEM                                               VARCHAR2(20)
+ ITEM_PRICE                                         NUMBER(10)
+ DISCOUNT                                           NUMBER(10)
+
+SQL> select *from order_detail;
+
+  ORDER_NO ORDER_DATE           ITEM                 ITEM_PRICE   DISCOUNT      
+---------- -------------------- -------------------- ---------- ----------      
+         1 28-07-26             pizza                        99         10      
+
+SQL> insert into order_detail values ('2','29-07-2026','burger','79','5');
+
+1 row created.
+
+SQL> insert into order_detail values('3','30-07-2026','fried rice','119','10');
+
+1 row created.
+
+SQL> select *from order_detail;
+
+  ORDER_NO ORDER_DATE           ITEM                 ITEM_PRICE   DISCOUNT      
+---------- -------------------- -------------------- ---------- ----------      
+         1 28-07-26             pizza                        99         10      
+         2 29-07-2026           burger                       79          5      
+         3 30-07-2026           fried rice                  119         10      
+
+SQL> select  sum(item_price) from order_detail;
+
+SUM(ITEM_PRICE)                                                                 
+---------------                                                                 
+            297                                                                 
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select *from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+ORDER_DETAIL                   TABLE                                            
+DEPARTMENT                     TABLE                                            
+EMPLOYEE2                      TABLE                                            
+EMPLOYEEDETAILSS               TABLE                                            
+BIN$bwL+4Q5/RjCyDt/CUh/fdw==$0 TABLE                                            
+BIN$qcj7UgtAREqnoarpX5gERQ==$0 TABLE                                            
+EMPLOYEE                       TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+STUDENTS                       TABLE                                            
+EMP21                          TABLE                                            
+STUDENT                        TABLE                                            
+DEPARTMENT2                    TABLE                                            
+
+15 rows selected.
+
+SQL> create table emp3 (emp_no number(10),emp_name varchar2(20),company varchar2(20),city v arcahr2(
+  2  create table emp3 (emp_no number(10),emp_name varchar2(20),company varchar2(20),salary number(10),city varchar2(20);
+create table emp3 (emp_no number(10),emp_name varchar2(20),company varchar2(20),city v arcahr2(
+                                                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table emp3 (emp_no number(10),emp_name varchar2(20),company varchar2(20),salary number(10),city varchar2(20);
+create table emp3 (emp_no number(10),emp_name varchar2(20),company varchar2(20),salary number(10),city varchar2(20)
+                                                                                                                  *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table emp3 (emp_no number(10),emp_name varchar2(20),company varchar2(20),salary number(10),city varchar2(20));
+
+Table created.
+
+SQL> desc emp3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_NO                                             NUMBER(10)
+ EMP_NAME                                           VARCHAR2(20)
+ COMPANY                                            VARCHAR2(20)
+ SALARY                                             NUMBER(10)
+ CITY                                               VARCHAR2(20)
+
+SQL> 

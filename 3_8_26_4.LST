@@ -1,0 +1,81 @@
+insert into item_master values('3','cable,'250','16')
+  2  ;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> insert into item_master values('3','cable,'250','16');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> insert into item_master values('3','cable','250','16');
+
+1 row created.
+
+SQL> inert into item_master values ('4','lan cable','150','18');
+SP2-0734: unknown command beginning "inert into..." - rest of line ignored.
+SQL>  insert into item_master values ('4','lan cable','150','18');
+
+1 row created.
+
+SQL> select *from item_master;
+
+   ITEM_ID ITEM_NAME                 PRICE COMPANY_CODE                         
+---------- -------------------- ---------- ------------                         
+         1 laptop                    40000           12                         
+         2 mouse                       300           14                         
+         3 cable                       250           16                         
+         4 lan cable                   150           18                         
+
+SQL> select *from item_master where price<200 and price>600;
+
+no rows selected
+
+SQL> select *from item_master where price between 200 and 600;
+
+   ITEM_ID ITEM_NAME                 PRICE COMPANY_CODE                         
+---------- -------------------- ---------- ------------                         
+         2 mouse                       300           14                         
+         3 cable                       250           16                         
+
+SQL> select avg(price) from item_master;
+
+AVG(PRICE)                                                                      
+----------                                                                      
+     10175                                                                      
+
+SQL> select avg(price) and company_code *from item_master where company_code='16';
+select avg(price) and company_code *from item_master where company_code='16'
+                  *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select avg(price) and company_code from item_master where company_code='16';
+select avg(price) and company_code from item_master where company_code='16'
+                  *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select avg(price) from item_master where company_code='16';
+
+AVG(PRICE)                                                                      
+----------                                                                      
+       250                                                                      
+
+SQL> select item_name,item_price from item_master where price=(select min(price) from item_master);
+select item_name,item_price from item_master where price=(select min(price) from item_master)
+                 *
+ERROR at line 1:
+ORA-00904: "ITEM_PRICE": invalid identifier 
+
+
+SQL> select item_name,price from item_master where price=(select min(price) from item_master);
+
+ITEM_NAME                 PRICE                                                 
+-------------------- ----------                                                 
+lan cable                   150                                                 
+
+SQL> 

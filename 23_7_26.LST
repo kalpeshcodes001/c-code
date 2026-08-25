@@ -1,0 +1,160 @@
+select *from employee2;
+ 
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     16754 krupavala            pragrammer                          13654       
+13-08-1990                 3000                    10                           
+                                                                                
+     14562 kalpanajoshi         clerk                                           
+17-09-1990                17000                    40                           
+                                                                                
+     12435 kevalraval           salesman                            12345       
+20-10-1990                18000       6500         20                           
+                                                                                
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     13654 parth vasoya         anylyst                             12675       
+27-12-1995                90000                    10                           
+                                                                                
+     18654 ramesh vasoya        anylyst                             12675       
+15-05-1993                85000                    10                           
+                                                                                
+     12345 bansipadia           clerk                                           
+18-11-1990                15000                    10                           
+                                                                                
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     13254 radhasharma          salesman                            12345       
+25-11-1990                12000       4000         20                           
+                                                                                
+     12675 tanmaydomadiya       president                                       
+05-07-1985               124000                    10                           
+                                                                                
+     13457 surajprakash         salesman                            12345       
+12-08-1992                14650       1700         30                           
+                                                                                
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     14567 seema lava           pragrammer                          13654       
+17-07-1994                35000                    10                           
+                                                                                
+
+10 rows selected.
+
+SQL> select emp_name,post ,salary from employee2;
+
+EMP_NAME             POST                               SALARY                  
+-------------------- ------------------------------ ----------                  
+krupavala            pragrammer                           3000                  
+kalpanajoshi         clerk                               17000                  
+kevalraval           salesman                            18000                  
+parth vasoya         anylyst                             90000                  
+ramesh vasoya        anylyst                             85000                  
+bansipadia           clerk                               15000                  
+radhasharma          salesman                            12000                  
+tanmaydomadiya       president                          124000                  
+surajprakash         salesman                            14650                  
+seema lava           pragrammer                          35000                  
+
+10 rows selected.
+
+SQL> select sum(salary) from employee2;
+
+SUM(SALARY)                                                                     
+-----------                                                                     
+     413650                                                                     
+
+SQL> update employee2 set salary=30000 where emp_id=16754;
+
+1 row updated.
+
+SQL> select salary from employee2;
+
+    SALARY                                                                      
+----------                                                                      
+     30000                                                                      
+     17000                                                                      
+     18000                                                                      
+     90000                                                                      
+     85000                                                                      
+     15000                                                                      
+     12000                                                                      
+    124000                                                                      
+     14650                                                                      
+     35000                                                                      
+
+10 rows selected.
+
+SQL> select sum(salary) from employee2;
+
+SUM(SALARY)                                                                     
+-----------                                                                     
+     440650                                                                     
+
+SQL> select *from department2 where location='anand';
+
+   DEPT_NO DEPART_NAME                    LOCATION                              
+---------- ------------------------------ ------------------------------        
+        10 it                             anand                                 
+        40 finance                        anand                                 
+
+SQL> select depart_name,dept_id from employee2 where dept_id='10','20','40';
+select depart_name,dept_id from employee2 where dept_id='10','20','40'
+                                                            *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select depart_name,where dept_id='10','20','40';
+select depart_name,where dept_id='10','20','40'
+                   *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select depart_name from employee2 where dept_id='10','20','40';
+select depart_name from employee2 where dept_id='10','20','40'
+                                                    *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select depart_name from department2 where dept_id='10','20','40';
+select depart_name from department2 where dept_id='10','20','40'
+                                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select depart_name from department2 where dept_no='10,'20','40';
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> select depart_name from department2 where dept_no='10','20','40';
+select depart_name from department2 where dept_no='10','20','40'
+                                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select depart_name from department2 where dept_no=10 or dept_no=20 or dept_no=40;
+
+DEPART_NAME                                                                     
+------------------------------                                                  
+it                                                                              
+sales                                                                           
+finance                                                                         
+
+SQL> 

@@ -1,0 +1,168 @@
+select *from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+DEPARTMENT                     TABLE                                            
+EMPLOYEE2                      TABLE                                            
+EMPLOYEEDETAILSS               TABLE                                            
+BIN$bwL+4Q5/RjCyDt/CUh/fdw==$0 TABLE                                            
+BIN$qcj7UgtAREqnoarpX5gERQ==$0 TABLE                                            
+EMPLOYEE                       TABLE                                            
+STUDENTS                       TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+EMP21                          TABLE                                            
+STUDENT                        TABLE                                            
+DEPARTMENT2                    TABLE                                            
+
+14 rows selected.
+
+SQL> select *dapartment2;
+select *dapartment2
+        *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select *from department2;
+
+   DEPT_NO DEPART_NAME                    LOCATION                              
+---------- ------------------------------ ------------------------------        
+        10 it                             anand                                 
+        20 sales                          bombay                                
+        30 purchase                       surat                                 
+        40 finance                        anand                                 
+        50 marketing                      surat                                 
+
+SQL> select *from employee2;
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     16754 krupavala            pragrammer                          13654       
+13-08-1990                 3000                    10                           
+                                                                                
+     14562 kalpanajoshi         clerk                                           
+17-09-1990                17000                    40                           
+                                                                                
+     12435 kevalraval           salesman                            12345       
+20-10-1990                18000       6500         20                           
+                                                                                
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     13654 parth vasoya         anylyst                             12675       
+27-12-1995                90000                    10                           
+                                                                                
+     18654 ramesh vasoya        anylyst                             12675       
+15-05-1993                85000                    10                           
+                                                                                
+     12345 bansipadia           clerk                                           
+18-11-1990                15000                    10                           
+                                                                                
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     13254 radhasharma          salesman                            12345       
+25-11-1990                12000       4000         20                           
+                                                                                
+     12675 tanmaydomadiya       president                                       
+05-07-1985               124000                    10                           
+                                                                                
+     13457 surajprakash         salesman                            12345       
+12-08-1992                14650       1700         30                           
+                                                                                
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     14567 seema lava           pragrammer                          13654       
+17-07-1994                35000                    10                           
+                                                                                
+
+10 rows selected.
+
+SQL> select *from employee2 where post='salesman' and emp_name like'k%';
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     12435 kevalraval           salesman                            12345       
+20-10-1990                18000       6500         20                           
+                                                                                
+
+SQL> select emp_name,post from employee2 where post='clerk';
+
+EMP_NAME             POST                                                       
+-------------------- ------------------------------                             
+kalpanajoshi         clerk                                                      
+bansipadia           clerk                                                      
+
+SQL> select emp_name,salary from employee2 whrere salary>=20000 and salary <=90000;
+select emp_name,salary from employee2 whrere salary>=20000 and salary <=90000
+                                             *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select emp_name,salary from employee2 where salary>=20000 and salary<=90000;
+
+EMP_NAME                 SALARY                                                 
+-------------------- ----------                                                 
+parth vasoya              90000                                                 
+ramesh vasoya             85000                                                 
+seema lava                35000                                                 
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select *from employee2 where dept_id='10';
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     16754 krupavala            pragrammer                          13654       
+13-08-1990                 3000                    10                           
+                                                                                
+     13654 parth vasoya         anylyst                             12675       
+27-12-1995                90000                    10                           
+                                                                                
+     18654 ramesh vasoya        anylyst                             12675       
+15-05-1993                85000                    10                           
+                                                                                
+
+    EMP_ID EMP_NAME             POST                               MGR_ID       
+---------- -------------------- ------------------------------ ----------       
+HIRE_DATE                SALARY  OMMISSION    DEPT_ID                           
+-------------------- ---------- ---------- ----------                           
+     12345 bansipadia           clerk                                           
+18-11-1990                15000                    10                           
+                                                                                
+     12675 tanmaydomadiya       president                                       
+05-07-1985               124000                    10                           
+                                                                                
+     14567 seema lava           pragrammer                          13654       
+17-07-1994                35000                    10                           
+                                                                                
+
+6 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
