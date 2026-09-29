@@ -25,8 +25,26 @@ void main()
 		friend string concat(string s1,string s2);
 };
 
-string concat(strig s1,strig s2)
+string concat(string s1,string s2)
 {
+	string s3;
+	s3.len= s1.len+s2.len ;
+	s3.nm=new char[s3.len+1];
+	strcpy(s3.nm,s1.nm);
+	strcat(s3.nm,s2.nm);
+	return(s3);
+}
+void main()
+{
+	clrscr();
+	string s1("shah"),s2("brijesh"),s3;
+
+	s3=concat(s1,s2);
+
+	s1.put();
+	s2.put();
+	s3.put();
+	getch();
 
 }
 
